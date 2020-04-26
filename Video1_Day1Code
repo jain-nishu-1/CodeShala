@@ -1,0 +1,11 @@
+var ball = createSprite(200, 200, 10, 10);
+ball.velocityY = 6;
+ball.velocityX = 7;
+var obstacle = createSprite(170, 100, 70, 10);
+function draw() {
+  background("yellow");
+  createEdgeSprites();
+  ball.bounceOff(edges);
+  ball.bounceOff(obstacle);
+  drawSprites();
+}
