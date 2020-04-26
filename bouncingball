@@ -1,0 +1,29 @@
+var ball = createSprite(200, 200, 10, 10);
+ball.setAnimation("parrot_token_1");
+ball.scale = 0.1;
+ball.velocityY = 6;
+ball.velocityX = 7;
+var board = createSprite(170, 380, 70, 10);
+board.setAnimation("box2_1");
+board.scale = 0.5;
+function draw() {
+  background("cyan");
+  if (keyDown("right")) {
+    board.velocityX = 4;
+  } else {
+    if (keyWentUp("right")) {
+      board.velocityX = 0;
+    }
+  }
+  if (keyDown("left")) {
+    board.velocityX = -4;
+  } else {
+    if (keyWentUp("left")) {
+      board.velocityX = 0;
+    }
+  }
+  createEdgeSprites();
+  ball.bounceOff(edges);
+  ball.bounceOff(board);
+  drawSprites();
+}
